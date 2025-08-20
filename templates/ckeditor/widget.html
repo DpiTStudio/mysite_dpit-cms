@@ -1,0 +1,14 @@
+{% load static %}
+{% load i18n %}
+
+<div class="ckeditor-widget">
+    <textarea id="{{ id }}" name="{{ name }}">{{ value }}</textarea>
+    
+    <script type="text/javascript">
+        CKEDITOR.replace('{{ id }}', {
+            {% for key, value in config.items %}
+            '{{ key }}': '{{ value }}',
+            {% endfor %}
+        });
+    </script>
+</div>
