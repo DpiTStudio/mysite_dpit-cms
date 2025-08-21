@@ -117,7 +117,6 @@ TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -133,7 +132,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
 
 # Папка куда collectstatic соберет все файлы для production
 # STATIC_ROOT = BASE_DIR / "staticfiles"  # ДРУГАЯ папка!
@@ -156,6 +154,14 @@ JAZZMIN_SETTINGS = {
     "site_logo": "images/logo.png",
     "site_logo_classes": "img-circle",
     "welcome_sign": "Добро пожаловать в админку DpiT-CMS",
+    "enable_reports": True,
+    "permissions": {
+        "news": {
+            "change": [
+                {"name": "news.news", "permissions": ["news.view_news"]},
+            ]
+        }
+    }
     # "search_model": ["auth.User", "news.News", "portfolio.Portfolio"],
     "topmenu_links": [
         {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
