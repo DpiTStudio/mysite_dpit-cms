@@ -28,8 +28,12 @@ class News(models.Model):
     seo_title = models.CharField(max_length=200, verbose_name="SEO Заголовок")
     seo_keywords = models.CharField(max_length=200, verbose_name="SEO Ключевые слова")
     seo_description = models.CharField(max_length=255, verbose_name="SEO Описание")
-    content = RichTextField(verbose_name="Содержание")
-    content_short = RichTextField(verbose_name="Краткое содержание")
+    content_short = models.CharField(
+        max_length=255, verbose_name="Красткое  описание", blank=True, null=True
+    )
+    content = models.TextField(verbose_name="Основное оописание", blank=True, null=True)
+    # content = RichTextField(verbose_name="Содержание")
+    # content_short = RichTextField(verbose_name="Краткое содержание")
     # content = RichTextField(verbose_name="Содержание")
     views = models.PositiveIntegerField(default=0, verbose_name="Просмотры")
     is_active = models.BooleanField(default=True, verbose_name="Активно")

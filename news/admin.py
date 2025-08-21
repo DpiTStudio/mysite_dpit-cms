@@ -30,9 +30,8 @@ class NewsCategoryAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = (
-        "id",
         "image_preview",
-        "title",
+        "seo_title",
         "category",
         "is_active",
         "created_at",
@@ -40,9 +39,9 @@ class NewsAdmin(admin.ModelAdmin):
     )
     list_editable = ("is_active",)
     list_filter = ("category", "is_active", "created_at")
-    search_fields = ("title", "seo_title", "seo_description")
-    prepopulated_fields = {"slug": ("title",)}
-    readonly_fields = ("image_preview", "created_at", "updated_at")
+    search_fields = ("seo_title", "seo_keywords", "seo_description")
+    prepopulated_fields = {"slug": ("seo_title",)}
+    readonly_fields = ("image_preview", "created_at", "updated_at", "views")
     date_hierarchy = "created_at"
 
     fieldsets = (
@@ -50,21 +49,30 @@ class NewsAdmin(admin.ModelAdmin):
             "Основная информация",
             {
                 "fields": (
-                    "category",
-                    "title",
+                    "seo_title",
                     "slug",
+                    "category",
                     "image",
                     "image_preview",
-                    "content",
+                    "is_active",
                 )
             },
         ),
         (
-            "SEO информация",
-            {"fields": ("seo_title", "seo_keywords", "seo_description")},
+            "Контент",
+            {"fields": ("content_short", "content")},
         ),
-        ("Статистика", {"fields": ("views", "created_at", "updated_at")}),
-        ("Статус", {"fields": ("is_active",)}),
+        (
+            "SEO информация",
+            {"fields": ("seo_keywords", "seo_description")},
+        ),
+        (
+            "Статистика",
+            {
+                "fields": ("views", "created_at", "updated_at"),
+                "classes": ("collapse",),  # можно свернуть эту секцию
+            },
+        ),
     )
 
     def image_preview(self, obj):
