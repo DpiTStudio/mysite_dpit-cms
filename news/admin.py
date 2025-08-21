@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import NewsCategory, News
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 @admin.register(NewsCategory)
@@ -31,7 +30,8 @@ class NewsCategoryAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = (
-        "idimage_preview",
+        "id",
+        "image_preview",
         "title",
         "category",
         "is_active",
