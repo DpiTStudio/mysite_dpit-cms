@@ -31,8 +31,8 @@ class News(models.Model):
     content_short = models.CharField(
         max_length=255, verbose_name="Красткое  описание", blank=True, null=True
     )
-    content = models.TextField(verbose_name="Основное оописание", blank=True, null=True)
-    # content = RichTextField(verbose_name="Содержание")
+    # content = models.TextField(verbose_name="Основное оописание", blank=True, null=True)
+    content = RichTextField(verbose_name="Содержание")
     # content_short = RichTextField(verbose_name="Краткое содержание")
     # content = RichTextField(verbose_name="Содержание")
     views = models.PositiveIntegerField(default=0, verbose_name="Просмотры")
