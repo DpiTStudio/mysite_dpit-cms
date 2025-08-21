@@ -28,7 +28,7 @@ urlpatterns = [
     path("portfolio/", include("portfolio.urls")),
     path("reviews/", include("reviews.urls")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Только в режиме разработки
 if settings.DEBUG:
