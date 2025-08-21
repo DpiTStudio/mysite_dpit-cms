@@ -121,9 +121,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # Настройки для разработки (development)
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+
+# Пути, откуда collectstatic будет собирать статические файлы
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# Альтернатива с pathlib (раскомментируйте, если используете этот подход)
 # STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "static"
+
+# Куда collectstatic соберет ВСЕ статические файлы для продакшена
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Важно: это строка, а не список!
+# Альтернатива с pathlib:
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Media files
 MEDIA_URL = "/media/"
