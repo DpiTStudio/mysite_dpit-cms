@@ -5,7 +5,75 @@
 <div class="container mt-4">
     <h1>Новости</h1>
     <p>Добро пожаловать на сайт!</p>
+
     {% if news %}
+    <div class="row">
+        {% for item in news %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 news-card">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <i class="fas fa-image fa-3x text-white"></i>
+                </div>
+                {% endif %}
+                
+                <div class="card-body">
+                    <span class="badge bg-primary mb-2">{{ item.category.name }}</span>
+                    <h5 class="card-title">{{ item.title|truncatewords:10 }}</h5>
+                    <p class="card-text text-muted small">
+                        {{ item.created_at|date:"d.m.Y" }}
+                        <span class="ms-3">
+                            <i class="fas fa-eye me-1"></i>{{ item.views }}
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <a href="{% url 'news_detail' item.slug %}" class="btn btn-primary w-100">
+                        Читать полностью
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Постраничная навигация -->
+    {% if news.has_other_pages %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if news.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ news.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in news.paginator.page_range %}
+                {% if news.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if news.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ news.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 
     {% else %}
     <div class="alert alert-info text-center">
@@ -16,8 +84,30 @@
         <p class="mb-0">Наши новости скоро появятся здесь. Возвращайтесь позже!</p>
     </div>
     {% endif %}
+</div>
 
 <style>
+.news-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
 .alert-info {
     background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
     border: none;
@@ -36,11 +126,31 @@
     font-size: 1.1em;
 }
 
+.pagination .page-item.active .page-link {
+    background-color: #1976d2;
+    border-color: #1976d2;
+}
+
+.pagination .page-link {
+    color: #1976d2;
+    border: none;
+    margin: 0 5px;
+    border-radius: 8px;
+}
+
+.pagination .page-link:hover {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
 @media (max-width: 768px) {
-    
     .alert-info {
         padding: 20px;
         margin: 30px 0;
+    }
+    
+    .news-card {
+        margin-bottom: 20px;
     }
 }
 </style>
