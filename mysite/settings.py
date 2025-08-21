@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from re import U
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost", "dpit-cms.ru"]
 
-
 # Application definition
-
 INSTALLED_APPS = [
     "jazzmin",
     "django.contrib.admin",
@@ -92,7 +91,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -108,10 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = "ru-ru"
 TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
@@ -142,11 +138,11 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
+# JAZZMIN SETTINGS
 JAZZMIN_SETTINGS = {
     "site_title": "DpiT-CMS",
+    "site_title_small": "DpiT-CMS",
     "site_header": "DpiT-CMS",
     "site_brand": "DpiT-CMS",
     "site_brand_small": "DpiT-CMS",
