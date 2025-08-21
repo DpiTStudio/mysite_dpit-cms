@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-tigran-3op!1*$3ot!jsf+$z459u&o5@3ui_cm_1k7w%svo)dcp0bsr+4"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost", "dpit-cms.ru"]
 
@@ -121,7 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # Настройки для разработки (development)
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Пути, откуда collectstatic будет собирать статические файлы
 STATICFILES_DIRS = [
@@ -131,7 +132,7 @@ STATICFILES_DIRS = [
 # STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Куда collectstatic соберет ВСЕ статические файлы для продакшена
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Важно: это строка, а не список!
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Важно: это строка, а не список!
 # Альтернатива с pathlib:
 # STATIC_ROOT = BASE_DIR / "staticfiles"
 
