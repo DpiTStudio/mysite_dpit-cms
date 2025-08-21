@@ -31,12 +31,12 @@ class NewsCategoryAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = (
+        "idimage_preview",
         "title",
         "category",
-        "image_preview",
-        "views",
         "is_active",
         "created_at",
+        "views",
     )
     list_editable = ("is_active",)
     list_filter = ("category", "is_active", "created_at")
