@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost", "dpit-cms.ru"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -121,18 +120,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# Настройки для разработки (development)
+# Указывает URL, по которому будут доступны статические файлы
 STATIC_URL = "/static/"
 
-# Папка где хранятся исходные static файлы
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # ваши исходные файлы
-]
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
+# Указывает путь к общей папке, куда collectstatic соберет ВСЕ статические файлы
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # или просто 'static'
 
+# Список дополнительных папок, откуда нужно собирать статику (обычно это ваши app/static/ папки)
+STATICFILES_DIRS = [
+    os.path.join(
+        BASE_DIR, "static"
+    ),  # если у вас есть общая папка static в корне проекта
+]
 
 # Папка куда collectstatic соберет все файлы для production
 # STATIC_ROOT = BASE_DIR / "staticfiles"  # ДРУГАЯ папка!
