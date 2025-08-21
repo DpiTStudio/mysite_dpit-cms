@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 # Указывает путь к общей папке, куда collectstatic соберет ВСЕ статические файлы
-STATIC_ROOT = os.path.join(BASE_DIR, "static")  # или просто 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # или просто 'static'
 
 # Список дополнительных папок, откуда нужно собирать статику (обычно это ваши app/static/ папки)
 STATICFILES_DIRS = [
