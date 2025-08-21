@@ -129,6 +129,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # ваши исходные файлы
 ]
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
 
 # Папка куда collectstatic соберет все файлы для production
 # STATIC_ROOT = BASE_DIR / "staticfiles"  # ДРУГАЯ папка!
