@@ -123,11 +123,11 @@ USE_TZ = True
 
 # Настройки для разработки (development)
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"
 
 # Папка где хранятся исходные static файлы
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # ваши исходные файлы
+    BASE_DIR / "static/",  # ваши исходные файлы
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
