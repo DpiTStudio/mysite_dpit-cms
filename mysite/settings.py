@@ -125,21 +125,18 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
 
 # Папка где хранятся исходные static файлы
-STATICFILES_DIRS = [
-    BASE_DIR / "static/",  # ваши исходные файлы
-]
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static/",  # ваши исходные файлы
+# ]
+# STATICFILES_FINDERS = [
+#     "django.contrib.staticfiles.finders.FileSystemFinder",
+#     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+# ]
 
-# Папка куда collectstatic соберет все файлы для production
-# STATIC_ROOT = BASE_DIR / "staticfiles"  # ДРУГАЯ папка!
 
 # Media files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -155,13 +152,6 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle",
     "welcome_sign": "Добро пожаловать в админку DpiT-CMS",
     "enable_reports": True,
-    "permissions": {
-        "news": {
-            "change": [
-                {"name": "news.news", "permissions": ["news.view_news"]},
-            ]
-        }
-    }
     # "search_model": ["auth.User", "news.News", "portfolio.Portfolio"],
     "topmenu_links": [
         {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
