@@ -78,7 +78,7 @@ class NewsAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
         if obj.image:
             return mark_safe(
-                f'<img src="{obj.image.url}" width="50" height="50" style="object-fit: cover;" />'
+                f'<img src="{obj.image.url}" width="20" height="20" style="object-fit: cover;" />'
             )
         return "Нет изображения"
 
