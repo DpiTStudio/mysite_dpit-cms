@@ -1,10 +1,9 @@
+from encodings.punycode import T
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class AboutPage(models.Model):
-    title = models.CharField(max_length=200, verbose_name="Заголовок")
-    content = RichTextField(verbose_name="Содержание")
+    title = models.CharField(max_length=200, verbose_name="Заголовок")    content = models.TextField(verbose_name="Содержание")
     image = models.ImageField(upload_to="about/", verbose_name="Изображение")
     seo_title = models.CharField(max_length=200, verbose_name="SEO Заголовок")
     seo_keywords = models.CharField(max_length=200, verbose_name="SEO Ключевые слова")

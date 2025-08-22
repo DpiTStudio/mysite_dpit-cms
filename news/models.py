@@ -1,11 +1,11 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class NewsCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     slug = models.SlugField(unique=True, verbose_name="URL")
     logo = models.ImageField(upload_to="news/categories/", verbose_name="Логотип")
+    context = models.TextField(verbose_name="Описание", blank=True, null=True)
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
     is_active = models.BooleanField(default=True, verbose_name="Активно")
 
@@ -31,10 +31,7 @@ class News(models.Model):
     content_short = models.CharField(
         max_length=255, verbose_name="Красткое  описание", blank=True, null=True
     )
-    # content = models.TextField(verbose_name="Основное оописание", blank=True, null=True)
-    content = RichTextField(verbose_name="Содержание")
-    # content_short = RichTextField(verbose_name="Краткое содержание")
-    # content = RichTextField(verbose_name="Содержание")
+    content = models.TextField(verbose_name="Описание", blank=True, null=True)
     views = models.PositiveIntegerField(default=0, verbose_name="Просмотры")
     is_active = models.BooleanField(default=True, verbose_name="Активно")
     created_at = models.DateTimeField(auto_now_add=True)
