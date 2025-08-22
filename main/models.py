@@ -5,9 +5,9 @@ class SiteMetadata(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок сайта")
     description = models.CharField(max_length=200, verbose_name="Описание сайта")
     keywords = models.CharField(max_length=200, verbose_name="Ключевые слова")
-    author = models.CharField(max_length=100, verbose_name="Автор")
     phone = models.CharField(max_length=20, verbose_name="Телефон")
     email = models.EmailField(verbose_name="Email")
+    author = models.CharField(max_length=100, verbose_name="Автор")
     address = models.CharField(max_length=200, verbose_name="Адрес")
     is_active = models.BooleanField(default=True, verbose_name="Активно")
 
@@ -17,3 +17,6 @@ class SiteMetadata(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
