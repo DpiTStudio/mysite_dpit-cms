@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-tigran-3op!1*$3ot!jsf+$z459u&o5@3ui_cm_1k7w%svo)dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "127.0.0.1", "localhost", "dpit-cms.ru"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -149,13 +149,6 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Добро пожаловать в админку DpiT-CMS",
     "enable_reports": True,
     # "search_model": ["auth.User", "news.News", "portfolio.Portfolio"],
-    "topmenu_links": [
-        {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Сайт", "url": "/", "new_window": True},
-        {"name": "Новости", "url": "admin:news_news_changelist"},
-        {"name": "Портфолио", "url": "admin:portfolio_portfolio_changelist"},
-        {"name": "Отзывы", "url": "admin:reviews_review_changelist"},
-    ],
     "show_sidebar": True,
     "navigation_expanded": True,
     "order_with_respect_to": [
