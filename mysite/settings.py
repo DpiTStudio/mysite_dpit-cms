@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-tigran-3op!1*$3ot!jsf+$z459u&o5@3ui_cm_1k7w%svo)dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "94.228.113.97"]
+ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "81.200.148.223"]
 
 PORT = 8000
 
